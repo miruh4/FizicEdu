@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+	<?php
+    $servername = "localhost";
+    $username = "alina";
+    $password = "alyne2006";
+    $dbname = "site";
+    $conn = mysqli_connect($servername, $username, $password, $dbname);
+session_start();
+    if (!$conn) { die("Connection failed: " . mysqli_connect_error()); }
+ $vaqr="";
+  if (isset($_POST['buton'])){
+	if((addslashes($_POST['username'])=="") or (addslashes($_POST['parola'])=="")){ $vaqr="-1";  }
+	else{
+  		$sql="INSERT INTO inregistrare (username,parola) VALUES ('".addslashes($_POST['username'])."','".addslashes($_POST['parola'])."')";
+		if(!mysqli_query($conn, $sql)){ $vaqr= mysqli_errno($conn); }
+		else { 
+ 			$_SESSION['cont']= mysqli_insert_id($conn);
+ 			header("Location: index1.html");
+			}	
+		}
+
+  die();}
+    ?>
+  <head>
+  	<title>Inregistrare</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	<link href="https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap" rel="stylesheet">
+
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	
+	<link rel="stylesheet" href="css/style.css">
+
+	</head>
+	<body style="background-color: #E0BBE4;">
+	<section class="ftco-section">
+		<div class="container">
+
+			<div class="row justify-content-center">
+				<div class="col-md-12 col-lg-10">
+					<div class="wrap d-md-flex">
+						<div class="img" style="background-image: url(logomov.png);">
+			      </div>
+						<div class="login-wrap p-4 p-md-5">
+			      	<div class="d-flex">
+			      		<div class="w-100">
+			      			<h3 class="mb-4">Înregistrare</h3>
+			      		</div>
+  <?php       
+              if($vaqr=="1062"){
+             echo'  <p><strong>Eroare!</strong> Există deja un cont cu acest username.</p>';}
+            if($vaqr=="-1"){
+            echo' <p> <strong>Eroare!</strong> Vă rugăm să completați toate câmpurile.</p>';}
+              ?>
+								
+			      	</div>
+							<form action="inregistrare1.html" class="signin-form" method="post">
+			      		<div class="form-group mb-3">
+			      			<label class="label" for="name">Username</label>
+			      			<input type="text" class="form-control" placeholder="Username" required id="username1" name="username">
+			      		</div>
+		            <div class="form-group mb-3">
+		            	<label class="label" for="password">Password</label>
+		              <input type="password" class="form-control" placeholder="Password" required id="parola1" name="parola">
+		            </div>
+ 				
+		            <div class="form-group">
+		            	<button type="submit" class="form-control btn btn-primary rounded submit px-3" name="buton">Înregistrare</button>
+		            </div>
+		          </form>
+		          <p class="text-center">Ai deja cont? <a href="login.html">Loghează-te</a></p>
+		        </div>
+		      </div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<script src="js/jquery.min.js"></script>
+  <script src="js/popper.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/main.js"></script>
+
+	</body>
+</html>
+

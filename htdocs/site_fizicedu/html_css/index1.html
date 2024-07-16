@@ -1,0 +1,789 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <?php
+    session_start();
+              if($_SESSION['cont']==""){header("Location: index1.html");die();} ?>
+
+<title>Elemente introductive în fizică</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="title" content="Elemente introductive în fizică">
+<meta name="author" content="Hrișcă Miruna şi Cîrîc Maria">
+<meta name="description" content="Elemente introductive în fizică de Hrișcă Miruna şi Cîrîc Maria">
+<meta name="viewport" content="width=device-width, initial-scale=1"> 
+<link type="text/css" href="./vendor/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
+<link type="text/css" href="./css/swipe.css" rel="stylesheet">
+</head>
+<body style="background-color: #E0BBE4;">
+    <header class="header-global" id="home">
+    <nav id="navbar-main" aria-label="Primary navigation" class="navbar navbar-main navbar-expand-lg navbar-theme-primary headroom navbar-light navbar-theme-secondary">
+        <div class="container position-relative">
+            <a class="navbar-brand mr-lg-4" href="./index1.html">
+            </a>
+            <div class="navbar-collapse collapse mr-auto" id="navbar_global">
+                <div class="navbar-collapse-header">
+                    <div class="row">
+                        <div class="col-6 collapse-brand">
+                            <a href="./index1.html">
+                                <img src="logo.png" alt="Logo dark" class="responsive">
+                            </a>
+                        </div>
+                        <div class="col-6 collapse-close">
+                            <a href="#navbar_global" class="fas fa-times" data-toggle="collapse" data-target="#navbar_global" aria-controls="navbar_global" aria-expanded="false" title="close" aria-label="Toggle navigation"></a>
+                        </div>
+                    </div>
+                </div>
+                <ul class="navbar-nav navbar-nav-hover align-items-lg-center">
+                    <li class="nav-item">
+                        <img src="logo.png" width="140" height="40" alt="FizicEdu" class="responsive">
+                    </li>
+                    <li class="nav-item">
+                        <a href="#electricitate" class="nav-link">
+                            Electricitate
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#mecanică" class="nav-link">
+                            Mecanică
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#termodinamică" class="nav-link">
+                            Termodinamică
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        
+                        <a href="calculator/index.html"><button><img class="navbar-brand-light responsive" src="calc.png"  width="40" height="30" alt="Calculator" ></button></a>
+                        
+                    </li>
+                    <li class="nav-item">
+                       <!--- <a href="#culegeri" class="nav-link">
+                            Culegeri-->
+                          
+                            <div class="dropdown">
+                                <button class="dropbtn"><img class="navbar-brand-light" class="responsive" src="culegeri.png"  width="40" height="30" alt="Culegeri"></button>
+                                
+                                <div class="dropdown-content">
+                                <a style="text-align:center" href="mihaela-chirita-fizica-ix-culegere-de-probleme-propuse-si-rezolvate_compress.pdf">Culegere Chiriţă clasa a IX-a</a>
+                                <a style="text-align:center" href="pdfcoffee.com_280230161-mihaela-chirita-culegere-fizica-clasa-a-x-a-si-bacalaureat-pdf-pdf-free.pdf">Culegere Chiriţă clasa a X-a</a>
+                                <a style="text-align:center" href="kupdf.net_culegere-admitere-politehnica-bucuresti.pdf">Culegere Politehnica București</a>
+                                </div>
+                              </div>
+                          </div>
+                    </li>
+                    
+                    
+                    <ul class="navbar-nav navbar-nav-hover align-items-lg-center">
+                        <li class="nav-item">
+                            <p class="mb-0"><a href="logout.html" style="text-decoration:none; color:black; font-size:15px;">Delogare</a></p>
+                        </li> &nbsp;
+                        <li class="nav-item">
+                            
+                    <?php $servername = "localhost";
+                        $username = "alina";
+                        $password = "alyne2006";
+                        $dbname = "site";
+                        $conn = mysqli_connect($servername, $username, $password, $dbname);
+
+                        if (!$conn) {
+                        die("Connection failed: " . mysqli_connect_error());
+                        }
+                        $sql="SELECT username AS np FROM inregistrare WHERE id=".$_SESSION['cont'];
+                            $result = mysqli_query($conn, $sql);
+                        if (mysqli_num_rows($result) > 0) {
+                        while ($row = mysqli_fetch_assoc($result)) {
+                        echo '<span class="nav-user-status">'.$row['np'].'</span>';}}
+?>
+                        </li>
+                    </ul></div>
+
+                </ul>
+                
+            </div>
+            <div class="d-flex align-items-center">
+                <button class="navbar-toggler ml-2" type="button" data-toggle="collapse" data-target="#navbar_global" aria-controls="navbar_global" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+</header>
+    <main>
+        <section class="section section-header text-dark pb-md-8">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-12 col-md-10 text-center mb-5 mb-md-7">
+                        <h1 class="display-2 font-weight-bolder mb-4">
+                            Elemente introductive în fizică
+                        </h1>
+                        <p class="lead mb-4 mb-lg-5">Toată materia necesară pentru examenul de Bacalaureat</p>
+                    <div class="col-12 col-md-12 justify-content-center">
+                        <p><b>Zile rămase până la examen</b></p> <p id="demo"> </p>
+                        <img class="d-none d-md-inline-block" src="fizica.jpg" alt="" border="3px" width="1000" class="responsive">
+                    </div>
+                </div>
+            </div>
+        </section>
+        <div class="section bg-soft" id="electricitate">
+            <figure class="position-absolute top-0 left-0 w-100 d-none d-md-block mt-n3">
+                <svg class="fill-soft" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 1920 43.4" style="enable-background:new 0 0 1920 43.4;" xml:space="preserve">
+                   <path d="M0,23.3c0,0,405.1-43.5,697.6,0c316.5,1.5,108.9-2.6,480.4-14.1c0,0,139-12.2,458.7,14.3 c0,0,67.8,19.2,283.3-22.7v35.1H0V23.3z"></path>
+                </svg>
+            </figure>
+            <div class="container">
+                <div class="row row-grid align-items-center">
+                    <div class="col-12 col-lg-6">
+                        <h2 class="display-3 mb-4"><b>Electricitate</b></h2>
+                    </div>
+                    <div class="col-12 col-lg-5 ml-lg-auto">
+                        <img class="d-none d-lg-inline-block" src="electricitate.jpg" alt="" border="3px" class="responsive">
+                    </div>
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-12 col-md-10">
+            <div class="accordion" id="accordionExample">
+                <div class="card border-light mb-0">
+                    <div class="card-header" id="headingOne">
+                        <h2 class="mb-0">
+                            <button class="btn btn-link btn-block d-flex justify-content-between text-left" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                <span class="h6 mb-0 font-weight-bold">Elemente de circuit</span>
+                                <span class="icon"><span class="fas fa-plus"></span></span>
+                            </button>
+                        </h2>
+                    </div>
+                    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+                        <div class="card-body">
+                            <img class="d-none d-lg-inline-block" src="elem_circ.jpg" alt="" width="400" height="800" class="responsive">
+                        </div>
+                    </div>                      
+                </div>
+                <div class="card border-light mb-0">
+                    <div class="card-header" id="headingTwo">
+                        <h2 class="mb-0">
+                            <button class="btn btn-link btn-block d-flex justify-content-between text-left" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                <span class="h6 mb-0 font-weight-bold">Legea lui Ohm</span>
+                                <span class="icon"><span class="fas fa-plus"></span></span>
+                            </button>
+                        </h2>
+                    </div>
+                    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+                        <div class="card-body">
+                            <img class="d-none d-lg-inline-block" src="ohm.jpg" alt="" width="400" height="500" class="responsive">                                                 
+                        </div>
+                    </div>
+                </div>
+                <div class="card border-light mb-0">
+                    <div class="card-header" id="headingThree">
+                        <h2 class="mb-0">
+                            <button class="btn btn-link btn-block d-flex justify-content-between text-left" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                <span class="h6 mb-0 font-weight-bold">Legarea rezistoarelor</span>
+                                <span class="icon"><span class="fas fa-plus"></span></span>
+                            </button>
+                        </h2>
+                    </div>
+                    <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+                        <div class="card-body">
+                            <p class="mb-0">
+                                Legare în serie
+                            </p>
+                            <img class="d-none d-lg-inline-block" src="rserie.jpg" alt="" width="400" height="300" class="responsive">
+                            <p class="mb-0">
+                                Legare în paralel
+                            </p>
+                            <img class="d-none d-lg-inline-block" src="rparalel.jpg" alt="" width="400" height="400" class="responsive">                           
+                        </div>
+                    </div>
+                </div>
+                <div class="card border-light mb-0">
+                    <div class="card-header" id="headingFour">
+                        <h2 class="mb-0">
+                            <button class="btn btn-link btn-block d-flex justify-content-between text-left" type="button" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                                <span class="h6 mb-0 font-weight-bold">Scurtcircuit</span>
+                                <span class="icon"><span class="fas fa-plus"></span></span>
+                            </button>
+                        </h2>
+                    </div>
+                    <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordionExample">
+                        <div class="card-body">
+                            <img class="d-none d-lg-inline-block" src="scurt.jpg" alt="" width="600" height="300" class="responsive">                           
+                        </div>
+                    </div>
+                </div>
+                <div class="card border-light mb-0">
+                    <div class="card-header" id="headingFive">
+                        <h2 class="mb-0">
+                            <button class="btn btn-link btn-block d-flex justify-content-between text-left" type="button" data-toggle="collapse" data-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                                <span class="h6 mb-0 font-weight-bold">Legile lui Kirchoff</span>
+                                <span class="icon"><span class="fas fa-plus"></span></span>
+                            </button>
+                        </h2>
+                    </div>
+                    <div id="collapseFive" class="collapse" aria-labelledby="headingFive" data-parent="#accordionExample">
+                        <div class="card-body">
+                            <p class="mb-0">
+                                Legea 1 Kirchoff: Suma algebrică (cu semn) a intensităților într-un nod este 0.
+                                nod = punct de intersecție a minim 3 conductori
+                            </p>
+                            <img class="d-none d-lg-inline-block" src="kirchoff1.jpg" alt="" width="400" height="400" class="responsive">
+                            <p class="mb-0">
+                                Legea 2 Kirchoff: Suma algebrică a tensiunilor electromotoare = suma algebrică a produselor dintre intensități și rezistențe.
+                            </p>
+                            <img class="d-none d-lg-inline-block" src="kirchoff2.jpg" alt="" width="700" height="500" class="responsive">                           
+                        </div>
+                    </div>
+                </div>
+                <div class="card border-light mb-0">
+                    <div class="card-header" id="headingSix">
+                        <h2 class="mb-0">
+                            <button class="btn btn-link btn-block d-flex justify-content-between text-left" type="button" data-toggle="collapse" data-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
+                                <span class="h6 mb-0 font-weight-bold">Gruparea generatoarelor</span>
+                                <span class="icon"><span class="fas fa-plus"></span></span>
+                            </button>
+                        </h2>
+                    </div>
+                    <div id="collapseSix" class="collapse" aria-labelledby="headingSix" data-parent="#accordionExample">
+                        <div class="card-body">
+                            <p class="mb-0">
+                                Legare în serie
+                            </p>
+                            <img class="d-none d-lg-inline-block" src="eserie.jpg" alt="" width="300" height="500" class="responsive">
+                            <p class="mb-0">
+                                Legare în paralel
+                            </p>
+                            <img class="d-none d-lg-inline-block" src="eparalel.jpg" alt="" width="500" height="300" class="responsive">                           
+                        </div>
+                    </div>
+                </div>
+                <div class="card border-light mb-0">
+                    <div class="card-header" id="headingSeven">
+                        <h2 class="mb-0">
+                            <button class="btn btn-link btn-block d-flex justify-content-between text-left" type="button" data-toggle="collapse" data-target="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
+                                <span class="h6 mb-0 font-weight-bold">Putere. Energie</span>
+                                <span class="icon"><span class="fas fa-plus"></span></span>
+                            </button>
+                        </h2>
+                    </div>
+                    <div id="collapseSeven" class="collapse" aria-labelledby="headingSeven" data-parent="#accordionExample">
+                        <div class="card-body">
+                            <img class="d-none d-lg-inline-block" src="puterenergie.jpg" alt="" width="600" height="600" class="responsive">                           
+                        </div>
+                    </div>
+                </div>
+                <div class="card border-light mb-0">
+                    <div class="card-header" id="headingEight">
+                        <h2 class="mb-0">
+                            <button class="btn btn-link btn-block d-flex justify-content-between text-left" type="button" data-toggle="collapse" data-target="#collapseEight" aria-expanded="false" aria-controls="collapseEight">
+                                <span class="h6 mb-0 font-weight-bold">Randamentul</span>
+                                <span class="icon"><span class="fas fa-plus"></span></span>
+                            </button>
+                        </h2>
+                    </div>
+                    <div id="collapseEight" class="collapse" aria-labelledby="headingEight" data-parent="#accordionExample">
+                        <div class="card-body">
+                            <img class="d-none d-lg-inline-block" src="rand.jpg" alt="" width="600" height="300" class="responsive">                           
+                        </div>
+                    </div>
+                </div>
+                <div class="card border-light mb-0">
+                    <div class="card-header" id="headingNine">
+                        <h2 class="mb-0">
+                            <button class="btn btn-link btn-block d-flex justify-content-between text-left" type="button" data-toggle="collapse" data-target="#collapseNine" aria-expanded="false" aria-controls="collapseNine">
+                                <span class="h6 mb-0 font-weight-bold">Rezistența Șunt</span>
+                                <span class="icon"><span class="fas fa-plus"></span></span>
+                            </button>
+                        </h2>
+                    </div>
+                    <div id="collapseNine" class="collapse" aria-labelledby="headingNine" data-parent="#accordionExample">
+                        <div class="card-body">
+                            <p class="mb-0">
+                                Șunt este o rezistență ce se montează în paralel cu un ampermetru montat în serie pentru a îi mări etalonul de măsură.
+                            </p>
+                            <img class="d-none d-lg-inline-block" src="rs.jpg" alt="" width="400" height="300" class="responsive">                           
+                        </div>
+                    </div>
+                </div>
+                <div class="card border-light mb-0">
+                    <div class="card-header" id="headingTen">
+                        <h2 class="mb-0">
+                            <button class="btn btn-link btn-block d-flex justify-content-between text-left" type="button" data-toggle="collapse" data-target="#collapseTen" aria-expanded="false" aria-controls="collapseTen">
+                                <span class="h6 mb-0 font-weight-bold">Rezistența Adițională</span>
+                                <span class="icon"><span class="fas fa-plus"></span></span>
+                            </button>
+                        </h2>
+                    </div>
+                    <div id="collapseTen" class="collapse" aria-labelledby="headingTen" data-parent="#accordionExample">
+                        <div class="card-body">
+                            <p class="mb-0">
+                                Rezistența adițională este rezultatul care se măsoară în serie cu un voltmetru (care se pune de obicei în paralel) pentru a îi mări scara de măsură.
+                            </p>
+                            <img class="d-none d-lg-inline-block" src="rad.jpg" alt="" width="600" height="300" class="responsive">                           
+                        </div>
+                    </div>
+                </div>
+                &nbsp;&nbsp;
+                <div class="d-flex justify-content-center">
+                <div class="contact-left button" >
+            <a href="Subiete_BAC_electricitate.pdf"><button type="submit"><font color="black">Variante BAC Electricitate</font> <img src="assets/arrow_icon.png" alt=""></button></a>
+        </div></div>
+            </div>
+        </div>
+    </div>
+</div>
+        <section class="section section-lg" id="mecanică">
+            <div class="container">
+                <div class="row justify-content-center mb-5 mb-lg-7">
+                    <div class="col-12 col-lg-8 text-center">
+                        <h2 class="h1 mb-4"><b>Mecanică</b></h2>
+                    </div>
+                </div>
+                <div class="row row-grid align-items-center mb-5 mb-lg-7">
+                    <div class="col-12 col-lg-5 order-lg-2">
+                        <h2 class="mb-4"><font color=#85586F>Mișcări (CINEMATICĂ)</font></h2>
+                        <p style="font-weight:bold">v - viteză</p>
+                        <p style="font-weight:bold">d - distanță</p>
+                        <p style="font-weight:bold">t - timp</p>
+                        <p style="font-weight:bold">a - accelerație</p>
+                    </div>
+                    <div class="col-8 col-lg-5 mr-lg-auto">
+                        <img src="cinematic.jpg" class="w-100" alt="" border="3px" class="responsive">
+                </div>
+                </div>
+                &nbsp;
+                    <div>
+                        <center><iframe src="https://docs.google.com/presentation/d/e/2PACX-1vSfRgMrxDXfLcK3981eSs7HK8FVIxtPVO6jNYXIcnXVTvkSSfYU5cau-nWzT5wijtxvRntAeXEtsoJ7/embed?start=false&loop=true&delayms=10000" frameborder="0" width="960" height="569" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe></center>
+                    </div>
+                &nbsp;
+                <div class="row row-grid align-items-center mb-5 mb-lg-7">
+                    <div class="col-12 col-lg-5">
+                        <h2 class="mb-4"><font color=#85586F>Principiile dinamicii</font></h2>
+                        <p style="font-weight:bold"><font color=#FF087F>Principiul I</font></p>
+                        <p>Orice corp își menține starea de repaus sau de mișcare rectilinie uniformă atât timp cât asupra sa nu acționează alte forțe sau suma forțelor care acționează asupra sa este nulă.</p>
+                        <p style="font-weight:bold"><font color=#FF087F>Principiul II</font></p>
+                        <p>Principiul al doilea al mecanicii introduce noțiunea de forță ca fiind derivata impulsului în raport cu timpul:</p>
+                        <p style="font-weight:bold">F = <sup>dp</sup>/<sub>dt</sub></p>
+                        <p>sau folosind definiția impulsului:</p>
+                        <p style="font-weight:bold">F = <sup>d(mv)</sup>/<sub>dt</sub></p>
+                        <p style="font-weight:bold"><li>F = m ⋅ a</li></p>
+                        <p style="font-weight:bold"><li>p = m ⋅ v</li></p>
+                        <p style="font-weight:bold"><font color=#FF087F>Principiul III</font></p>
+                        <p>Pentru oricare acțiune există o reacție de sens opus.</p>
+                    </div>
+                    <div class="col-12 col-lg-6 ml-lg-auto">
+                        <img src="./assets/img/illustrations/scene-3.svg" class="w-100" alt="" class="responsive">
+                    </div>
+                </div>
+                <div class="row row-grid align-items-center mb-5 mb-lg-7">
+                    <div class="col-12 col-lg-5 order-lg-2">
+                        <h2 class="mb-4"><font color=#85586F>Forța de frecare</font></h2>
+                        <p>Forța de frecare apare la suprafața de contact dintre 2 sau mai multe corpuri. Aceasta nu depinde de aria de contact, ci de natura materialelor.</p>
+                        <p>Forța de frecare se opune mișcării.</p>
+                    </div>
+                    <div class="col-8 col-lg-5 mr-lg-auto">
+                        <img src="ff.jpg" class="w-100" alt="" border="3px" class="responsive">
+                </div>
+            </div>
+                <div class="row row-grid align-items-center mb-5 mb-lg-7">
+                    <div class="col-12 col-lg-5">
+                        <h2 class="mb-4"><font color=#85586F>Planul înclinat</font></h2>
+                        <p style="font-weight:bold">N - normala la suprafață</p>
+                        <p style="font-weight:bold">μ - coeficientul de frecare la alunecare</p>
+                        <p style="font-weight:bold">G<sub>N</sub> - greutatea normală</p>
+                        <p style="font-weight:bold">G<sub>tg</sub> - greutatea tangențială</p>
+                        <p style="font-weight:bold">G = m ⋅ g</p>
+                        <p style="font-weight:bold">F<sub>f</sub> = μ ⋅ N</p>
+                        <p style="font-weight:bold">sin ⍺ = <sup>G<sub>tg</sub></sup>/<sub>G</sub></p>
+                        <p style="font-weight:bold">cos ⍺ = <sup>G<sub>N</sub></sup>/<sub>G</sub></p>
+                        <p style="font-weight:bold"><li>Condiția limită ca un corp aruncat în sus de-a lungul unui plan înclinat să se întoarcă la baza planului este:</li></p>
+                        <center><p style="font-weight:bold"><font color="magenta">tg ⍺ = μ</font></p></center>
+                    </div>
+                        <div class="col-12 col-lg-7 ml-lg-auto">
+                            <img src="planinclinat.jpg" class="w-50" alt="" height="300px"  border="3px" class="responsive">
+                        </div>
+                </div>
+                <div class="row row-grid align-items-center mb-5 mb-lg-7">
+                    <div class="col-12 col-lg-5 order-lg-2">
+                        <h2 class="mb-4"><font color=#85586F>Scripeți. Tensiunea în fir</font></h2>
+                    </div>
+                    <div class="col-8 col-lg-5 mr-lg-auto">
+                        <img src="scripete.jpg" class="w-100" alt="" border="3px" class="responsive">
+                </div>
+                </div>
+                <div class="row row-grid align-items-center mb-5 mb-lg-7">
+                    <div class="col-12 col-lg-5">
+                        <h2 class="mb-4"><font color=#85586F>Forța elastică. Legea lui HOOKE</font></h2>
+                        <p style="font-weight:bold">F - forță</p>
+                        <p style="font-weight:bold">S - suprafață</p>
+                        <p style="font-weight:bold">E - modulul lui Young</p>
+                        <p style="font-weight:bold">k - constanta elastică</p>
+                        <p style="font-weight:bold">l<sub>0</sub> - lungime inițială</p>
+                        <p style="font-weight:bold">△l - deformare</p>
+                        <p style="font-weight:bold">σ - efort unitar</p>
+                        <p style="font-weight:bold">ε - alungire relativă</p>
+                    </div>
+                    <div class="col-12 col-lg-7 ml-lg-auto">
+                        <img src="hooke.jpg" class="w-55" alt="" height="300px"  border="3px" class="responsive">
+                    </div>
+                </div>
+                <div class="row row-grid align-items-center mb-5 mb-lg-7">
+                    <div class="col-12 col-lg-5 order-lg-2">
+                        <h2 class="mb-4"><font color= #85586F>Lucru mecanic</font></h2>
+                        <p style="font-weight:bold">L = F ⋅ d ⋅ cos ⍺ = m ⋅ <sup>v</sup>/<sub>t</sub> ⋅ d = p ⋅ v</p>
+                        <p style="font-weight:bold">p - impuls</p>
+                        <p style="font-weight:bold">d - distanță</p>
+                        <p style="font-weight:bold">F - forță</p>
+                        <p style="font-weight:bold">m - masă</p>
+                        <p style="font-weight:bold">v - viteză</p>
+                        <p style="font-weight:bold">[L]<sub>S.I</sub> = [F]<sub>S.I</sub> ⋅ [d]<sub>S.I</sub> = N ⋅ m = J</p>
+                        <p style="font-weight:bold">L > 0 => motor</p>
+                        <p style="font-weight:bold">L < 0 => rezistiv</p>
+                    </div>
+                    <div class="col-8 col-lg-5 mr-lg-auto">
+                        <img src="lucrumecanic.jpg" class="w-100" alt="" border="3px" class="responsive">
+                </div>
+                </div>
+                <div class="row row-grid align-items-center mb-5 mb-lg-7">
+                    <div class="col-12 col-lg-5">
+                        <h2 class="mb-4"><font color=#85586F>Puterea. Randamentul</font></h2>
+                        <p style="font-weight:bold">P - putere</p>
+                        <p style="font-weight:bold">L - lucru mecanic</p>
+                        <p style="font-weight:bold">F - forță</p>
+                        <p style="font-weight:bold">d - distanță</p>
+                        <p style="font-weight:bold">t - timp</p>
+                    </div>
+                    <div class="col-12 col-lg-7 ml-lg-auto">
+                        <img src="putere.jpg" class="w-100" alt="" border="3px" class="responsive">
+                    </div>
+                </div>
+                <div class="row row-grid align-items-center mb-5 mb-lg-7">
+                    <div class="col-12 col-lg-5 order-lg-2">
+                        <h2 class="mb-4"><font color=#85586F>Conservarea energiei în câmp gravitațional</font></h2>
+                        <p>Într-un câmp de forțe conservativ, energia nu se pierde.</p>
+                        <p style="font-weight:bold">E<sub>C</sub> = -L<sub>G</sub></p>
+                        <p style="font-weight:bold">L<sub>G</sub> = m ⋅ g ⋅ h</p>
+                        <p style="font-weight:bold">L<sub>T</sub> = L<sub>F</sub> + L<sub>G</sub></p>
+                        <p style="font-weight:bold">E<sub>C</sub> = L<sub>T</sub></p>
+                        <p style="font-weight:bold">△E<sub>T</sub> = E<sub>C</sub> + E<sub>P</sub></p>
+                    </div>
+                    <div class="col-8 col-lg-5 mr-lg-auto">
+                        <img src="conservareaenergiei.jpg" class="w-100" alt="" border="3px" class="responsive">
+                </div>
+                </div>
+                <div class="row row-grid align-items-center mb-5 mb-lg-7">
+                    <div class="col-12 col-lg-5">
+                        <h2 class="mb-4"><font color=#85586F>Ciocniri plastice</font></h2>
+                    </div>
+                    <div class="col-12 col-lg-7 ml-lg-auto">
+                        <img src="ciocpl.jpg" class="w-55" alt="" border="3px" height="700px" class="responsive">
+                    </div>
+                </div>
+                <div class="row row-grid align-items-center mb-5 mb-lg-7">
+                    <div class="col-12 col-lg-5 order-lg-2">
+                        <h2 class="mb-4"><font color=#85586F>Ciocnire elastică</font></h2>
+                    </div>
+                    <div class="col-8 col-lg-5 mr-lg-auto">
+                        <img src="ciocel.jpg" class="w-100" alt="" border="3px" class="responsive">
+                </div>
+                </div>
+                &nbsp;&nbsp;
+                <div class="d-flex justify-content-center">
+                <div class="contact-left button">
+                        <a href="e_f_fizica_mecanica.pdf"><button type="submit"><font color="black">Variante BAC Mecanică</font> <img src="assets/arrow_icon.png" alt=""></button></a>
+                    </div></div>
+        </section>
+        <div class="section bg-soft" id="termodinamică">
+            <figure class="position-absolute top-0 left-0 w-100 d-none d-md-block mt-n3">
+                <svg class="fill-soft" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 1920 43.4" style="enable-background:new 0 0 1920 43.4;" xml:space="preserve">
+                   <path d="M0,23.3c0,0,405.1-43.5,697.6,0c316.5,1.5,108.9-2.6,480.4-14.1c0,0,139-12.2,458.7,14.3 c0,0,67.8,19.2,283.3-22.7v35.1H0V23.3z"></path>
+                </svg>
+            </figure>
+            <div class="container">
+                <div class="row row-grid align-items-center">
+                    <div class="col-12 col-lg-6">
+                        <h2 class="display-3 mb-4"><b>Termodinamică</b></h2>
+                    </div>
+                    <div class="col-12 col-lg-5 ml-lg-auto">
+                        <img class="d-none d-lg-inline-block" src="termo.jpg" alt="" border="3px" class="responsive">
+                    </div>
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-12 col-md-10">
+            <div class="accordion" id="accordionExample">
+                <div class="card border-light mb-0">
+                    <div class="card-header" id="headingOne">
+                        <h2 class="mb-0">
+                            <button class="btn btn-link btn-block d-flex justify-content-between text-left" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                <span class="h6 mb-0 font-weight-bold">Elemente introductive</span>
+                                <span class="icon"><span class="fas fa-plus"></span></span>
+                            </button>
+                        </h2>
+                    </div>
+                    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+                        <div class="card-body">
+                            <img class="d-none d-lg-inline-block" src="termo1.jpg" alt="" width="600" height="1000" class="responsive">
+                            <img class="d-none d-lg-inline-block" src="termo2.jpg" alt="" width="600" height="400" class="responsive">                           
+                        </div>
+                    </div>
+                </div>
+                <div class="card border-light mb-0">
+                    <div class="card-header" id="headingTwo">
+                        <h2 class="mb-0">
+                            <button class="btn btn-link btn-block d-flex justify-content-between text-left" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                <span class="h6 mb-0 font-weight-bold">Presiunea</span>
+                                <span class="icon"><span class="fas fa-plus"></span></span>
+                            </button>
+                        </h2>
+                    </div>
+                    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+                        <div class="card-body">
+                            <img class="d-none d-lg-inline-block" src="presiune.jpg" alt="" width="800" height="600" class="responsive">                           
+                        </div>
+                    </div>
+                </div>
+                <div class="card border-light mb-0">
+                    <div class="card-header" id="headingThree">
+                        <h2 class="mb-0">
+                            <button class="btn btn-link btn-block d-flex justify-content-between text-left" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                <span class="h6 mb-0 font-weight-bold">Transformarea Izobară</span>
+                                <span class="icon"><span class="fas fa-plus"></span></span>
+                            </button>
+                        </h2>
+                    </div>
+                    <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+                        <div class="card-body">
+                            <img class="d-none d-lg-inline-block" src="izob.jpg" alt="" width="900" height="400" class="responsive">                           
+                        </div>
+                    </div>
+                </div>
+                <div class="card border-light mb-0">
+                    <div class="card-header" id="headingFour">
+                        <h2 class="mb-0">
+                            <button class="btn btn-link btn-block d-flex justify-content-between text-left" type="button" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                                <span class="h6 mb-0 font-weight-bold">Transformarea Izocoră</span>
+                                <span class="icon"><span class="fas fa-plus"></span></span>
+                            </button>
+                        </h2>
+                    </div>
+                    <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordionExample">
+                        <div class="card-body">
+                            <img class="d-none d-lg-inline-block" src="izoc.jpg" alt="" width="900" height="500" class="responsive">                           
+                        </div>
+                    </div>
+                </div>
+                <div class="card border-light mb-0">
+                    <div class="card-header" id="headingFive">
+                        <h2 class="mb-0">
+                            <button class="btn btn-link btn-block d-flex justify-content-between text-left" type="button" data-toggle="collapse" data-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                                <span class="h6 mb-0 font-weight-bold">Transformarea Izotermă</span>
+                                <span class="icon"><span class="fas fa-plus"></span></span>
+                            </button>
+                        </h2>
+                    </div>
+                    <div id="collapseFive" class="collapse" aria-labelledby="headingFive" data-parent="#accordionExample">
+                        <div class="card-body">
+                            <img class="d-none d-lg-inline-block" src="izot.jpg" alt="" width="900" height="400" class="responsive">                           
+                        </div>
+                    </div>
+                </div>
+                <div class="card border-light mb-0">
+                    <div class="card-header" id="headingSix">
+                        <h2 class="mb-0">
+                            <button class="btn btn-link btn-block d-flex justify-content-between text-left" type="button" data-toggle="collapse" data-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
+                                <span class="h6 mb-0 font-weight-bold">Transformarea Adiabatică</span>
+                                <span class="icon"><span class="fas fa-plus"></span></span>
+                            </button>
+                        </h2>
+                    </div>
+                    <div id="collapseSix" class="collapse" aria-labelledby="headingSix" data-parent="#accordionExample">
+                        <div class="card-body">
+                            <img class="d-none d-lg-inline-block" src="adiab.jpg" alt="" width="800" height="600" class="responsive">                           
+                        </div>
+                    </div>
+                </div>
+                <div class="card border-light mb-0">
+                    <div class="card-header" id="headingSeven">
+                        <h2 class="mb-0">
+                            <button class="btn btn-link btn-block d-flex justify-content-between text-left" type="button" data-toggle="collapse" data-target="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
+                                <span class="h6 mb-0 font-weight-bold">Principiul 1 al termodinamicii</span>
+                                <span class="icon"><span class="fas fa-plus"></span></span>
+                            </button>
+                        </h2>
+                    </div>
+                    <div id="collapseSeven" class="collapse" aria-labelledby="headingSeven" data-parent="#accordionExample">
+                        <div class="card-body">
+                            <img class="d-none d-lg-inline-block" src="p1.jpg" alt="" width="600" height="1000" class="responsive">                           
+                        </div>
+                    </div>
+                </div>
+                <div class="card border-light mb-0">
+                    <div class="card-header" id="headingEight">
+                        <h2 class="mb-0">
+                            <button class="btn btn-link btn-block d-flex justify-content-between text-left" type="button" data-toggle="collapse" data-target="#collapseEight" aria-expanded="false" aria-controls="collapseEight">
+                                <span class="h6 mb-0 font-weight-bold">Randamentul</span>
+                                <span class="icon"><span class="fas fa-plus"></span></span>
+                            </button>
+                        </h2>
+                    </div>
+                    <div id="collapseEight" class="collapse" aria-labelledby="headingEight" data-parent="#accordionExample">
+                        <div class="card-body">
+                            <img class="d-none d-lg-inline-block" src="randament_termo.jpg" alt="" width="700" height="400" class="responsive">                          
+                        </div>
+                    </div>
+                </div>
+                <div class="card border-light mb-0">
+                    <div class="card-header" id="headingNine">
+                        <h2 class="mb-0">
+                            <button class="btn btn-link btn-block d-flex justify-content-between text-left" type="button" data-toggle="collapse" data-target="#collapseNine" aria-expanded="false" aria-controls="collapseNine">
+                                <span class="h6 mb-0 font-weight-bold">Ciclul Carnot</span>
+                                <span class="icon"><span class="fas fa-plus"></span></span>
+                            </button>
+                        </h2>
+                    </div>
+                    <div id="collapseNine" class="collapse" aria-labelledby="headingNine" data-parent="#accordionExample">
+                        <div class="card-body">
+                            <img class="d-none d-lg-inline-block" src="ciclu_carnot.jpg" alt="" width="700" height="400" class="responsive">                          
+                        </div>
+                    </div>
+                </div>
+                <div class="card border-light mb-0">
+                    <div class="card-header" id="headingTen">
+                        <h2 class="mb-0">
+                            <button class="btn btn-link btn-block d-flex justify-content-between text-left" type="button" data-toggle="collapse" data-target="#collapseTen" aria-expanded="false" aria-controls="collapseTen">
+                                <span class="h6 mb-0 font-weight-bold">Motorul Otto</span>
+                                <span class="icon"><span class="fas fa-plus"></span></span>
+                            </button>
+                        </h2>
+                    </div>
+                    <div id="collapseTen" class="collapse" aria-labelledby="headingTen" data-parent="#accordionExample">
+                        <div class="card-body">
+                            <img class="d-none d-lg-inline-block" src="motorul_otto.jpg" alt="" width="700" height="400" class="responsive">                         
+                        </div>
+                    </div>
+                </div>
+                <div class="card border-light mb-0">
+                    <div class="card-header" id="headingEleven">
+                        <h2 class="mb-0">
+                            <button class="btn btn-link btn-block d-flex justify-content-between text-left" type="button" data-toggle="collapse" data-target="#collapseEleven" aria-expanded="false" aria-controls="collapseEleven">
+                                <span class="h6 mb-0 font-weight-bold">Motorul Diesel</span>
+                                <span class="icon"><span class="fas fa-plus"></span></span>
+                            </button>
+                        </h2>
+                    </div>
+                    <div id="collapseEleven" class="collapse" aria-labelledby="headingEleven" data-parent="#accordionExample">
+                        <div class="card-body">
+                            <img class="d-none d-lg-inline-block responsive" src="motorul_diesel.jpg" alt="" width="700" height="400">                         
+                        </div>
+                    </div>
+                    &nbsp;&nbsp;
+                    <div class="d-flex justify-content-center">
+                    <div class="contact-left button">
+                        <a href="e_f_fizica_termodinamica.pdf"><button type="submit"><font color="black">Variante BAC Termodinamică</font> <img src="assets/arrow_icon.png" alt=""></button></a>
+                    </div></div>
+                    &nbsp;
+                    <div>
+                        <center><iframe src="https://docs.google.com/presentation/d/e/2PACX-1vRpmRSqVMAozV5dt754OwjcI6r7IVcRd3dwsG1i2cAYVR-rUHo0NIPtNcmLVJg2HZ3xlXPNxKig2a_u/embed?start=false&loop=true&delayms=15000" frameborder="0" width="960" height="569" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true" class="justify-content-center">
+                        </iframe></center>
+                    </div>
+                </div>
+            </div>
+          </div>
+        </div>
+    </div>
+</div>
+
+    </main>
+    <footer class="footer py-5 pt-lg-6" style="background-color: #E0BBE4;">
+        
+    <div class="sticky-right">
+        <a href="#home" class="icon icon-primary icon-md btn btn-icon-only btn-white border border-soft shadow-soft animate-up-3">
+            <span class="fas fa-chevron-up"></span>
+        </a>
+    </div>
+    <div class="container">
+        <div class="row justify-content-between">
+            <div class="col-6 col-md-2 mb-5 mb-lg-0">
+                <span class="h5"><b><font color=#FFFFFF>Hrișcă Miruna</font></b></span>
+                    <ul class="social-buttons mb-5 mb-lg-0">
+                        <li>
+                            <a href="https://www.instagram.com/_._miruuuu_._?igsh=OWducm1qOXA1Y29i&utm_source=qr" aria-label="instagram social link" class="icon icon-md icon-instagram mr-3">
+                                <img src="instaicon.png" width="40" height="40" alt="FizicEdu" class="center" class="responsive">
+                            </a>
+                        </li>
+                    </ul>
+            </div>
+            <div class="col-12 col-md-4 mb-5 mb-lg-0">
+                <span class="h5 mb-0 d-block"><b><font color=#FFFFFF>Cîrîc Maria</font></b></span>
+                <ul class="social-buttons mb-5 mb-lg-0">
+                    <li>
+                        <a href="https://www.instagram.com/maria__ciric?igsh=MW9kaThhemQ1ZWx5ag==" aria-label="instagram social link" class="icon icon-md icon-instagram mr-3">
+                            <img src="instaicon.png" width="40" height="40" alt="FizicEdu" class="center" class="responsive">
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <center>
+            <div class="contract-container">
+                <form action="https://api.web3forms.com/submit" method="POST" class="contract-left">
+                 <div class="contact-left-title">
+                  <h2>Contactează-ne</h2>
+                  <hr>
+                 </div>
+                 <input type="hidden" name="access_key" value="453beda4-415f-4711-b1b3-f2b4b017aa46">
+                 <input type="text" name="Nume" placeholder="Numele tău" class="contact-inputs" required>
+                 <input type="email" name="Email" placeholder="Email-ul tău" class="contact-inputs" required>
+                 <br><br>
+                 <textarea name="message" placeholder="Mesajul tău" class="contact-inputs" required></textarea>
+                 <br><br>
+                 <div class="d-flex justify-content-center">
+                 <div class="contact-left button">
+                 <button type="submit"><font color="black">Trimite</font> <img src="assets/arrow_icon.png" alt=""></button></div></div>
+                </form>
+                <div class="contact-right">
+                 <img src="assets/right_img.png" alt="">
+                </div>
+            </div>   
+        </center>
+        <hr class="bg-light my-2">
+        <div class="row pt-2 pt-lg-5">
+            <div class="col mb-md-0">
+                <center>
+                    <img src="logo_liceu.png" width="280" height="80" alt="FizicEdu" class="center" class="responsive">
+                </center>
+                &nbsp;&nbsp;&nbsp;
+                <center>
+                    <img src="dualpc_logo.png" width="80" height="80" alt="FizicEdu" class="center" class="responsive">
+                </center>
+                &nbsp;
+                <center>
+                    <img src="logo.png" width="140" height="40" alt="FizicEdu" class="center" class="responsive">
+                    </center>
+            <div class="d-flex text-center justify-content-center align-items-center" role="contentinfo">
+                <p class="font-weight-normal font-small mb-0">Copyright © FizicEdu2024. All rights reserved.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</footer>
+<script src="./vendor/popper.js/dist/umd/popper.min.js"></script>
+<script src="./vendor/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="./vendor/headroom.js/dist/headroom.min.js"></script>
+<script src="./vendor/onscreen/dist/on-screen.umd.min.js"></script>
+<script src="./vendor/smooth-scroll/dist/smooth-scroll.polyfills.min.js"></script>
+<script src="./assets/js/swipe.js"></script>
+<script> 
+    var countDownDate = new Date("Jul 4, 2024 09:00:00").getTime(); 
+    var x = setInterval(function() { var now = new Date().getTime(); 
+    var distance = countDownDate - now; 
+    var days = Math.floor(distance / (1000 * 60 * 60 * 24)); 
+    var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)); 
+    var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)); 
+    var seconds = Math.floor((distance % (1000 * 60)) / 1000); 
+    document.getElementById("demo").innerHTML = days + "d " + hours + "h " + minutes + "m " + seconds + "s "; 
+    if (distance < 0) { clearInterval(x); document.getElementById("demo").innerHTML = "EXPIRED"; } }, 1000); 
+</script>
+</body>
+</html>
